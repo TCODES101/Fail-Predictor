@@ -1,0 +1,35 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block content%}
+<a href="/home/">&#8592;Back</a>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Reg_no</th>
+        <th scope="col">Name</th>
+        <th scope="col">From(hrs)</th>
+        <th scope="col">To(hrs)</th>
+        <th scope="col">Date</th>
+        <th scope="col">Present</th>
+        <th scope="col"></th>
+
+      </tr>
+    </thead>
+    <tbody>
+    {%for student in att%}
+      <tr>
+        <th scope="row">{{student.pk}}</th>
+        <td>{{student.name}}</td>
+        <td>{{student.From_hrs}}</td>
+        <td>{{student.To_hrs}}</td>
+        <td>{{student.date}}</td>
+        <td>{{student.present}}</td>
+        
+       
+        <td><a href="{%url 'updateatt-view' student.pk%}">Update</a></td>
+      </tr>
+      {%endfor%}
+    
+    </tbody>
+  </table>
+{%endblock content%}

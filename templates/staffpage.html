@@ -1,0 +1,59 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block content%}
+<a href="/home/">&#8592;Back</a>
+<center><h4>Active users</h4></center>
+{%for msg in messages%}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{msg}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{%endfor%}
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Teaches</th>
+        <th scope="col"></th>
+       
+
+      </tr>
+    </thead>
+    <tbody>
+    {%for s in active%}
+      <tr>
+        <!-- <th scope="row">{{student.pk}}</th> -->
+        <td>{{s.username}}</td>
+        <td>{{s.unit}}</td>
+        <!-- <td><a href="{%url 'activate-view' s.pk%}"style='color:green;'>Activate</a></td> -->
+        <td><a href="{%url 'deactivate-view' s.pk%}" style="color: red;">Decativate</a></td>
+      </tr>
+      {%endfor%}
+    
+    </tbody>
+  </table>
+  <center><h4>Deactivated users</h4></center>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Teaches</th>
+        <th scope="col"></th>
+       
+
+      </tr>
+    </thead>
+    <tbody>
+    {%for s in deactivated%}
+      <tr>
+        <!-- <th scope="row">{{student.pk}}</th> -->
+        <td>{{s.username}}</td>
+        <td>{{s.unit}}</td>
+        <td><a href="{%url 'activate-view' s.pk%}"style='color:green;'>Activate</a></td>
+        <!-- <td><a href="{%url 'deactivate-view' s.pk%}" style="color: red;">Decativate</a></td> -->
+      </tr>
+      {%endfor%}
+    
+    </tbody>
+  </table>
+{%endblock content%}
